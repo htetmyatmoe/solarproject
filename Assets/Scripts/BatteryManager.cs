@@ -38,12 +38,12 @@ public class BatteryManager : MonoBehaviour
         if (output > 0f){
             float actualChargeRate = (output /100f )* maxChargeRate;
             batteryLevel += actualChargeRate * Time.deltaTime;
-            statusMessage = "Charging: + " + (actualChargeRate * 10f).ToString("F0") + "%";
+            statusMessage = "Charging Rate: + " + actualChargeRate.ToString("F0");
             barColor = Color.yellow;
         }
         else {
             batteryLevel -= dischargeRate * Time.deltaTime;
-            statusMessage = "Discharging: -"+ (dischargeRate * 10f).ToString("F0") + "%";
+            statusMessage = "Discharging Rate: -"+ dischargeRate.ToString("F0");
             barColor = Color.red;
         }
 
