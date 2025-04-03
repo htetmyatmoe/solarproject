@@ -15,11 +15,6 @@ public class SolarTrackerUI : MonoBehaviour
        {
            
            float outputPercent = tracker.outputPower;
-           
-
-
-
-           
            if (sourceController != null)
            {
                float intensityValue = sourceController.intensity;

@@ -4,7 +4,6 @@ public class BaseTracker : MonoBehaviour
 {
    public Transform sun;
    public float rotationSpeed = 1f;
-   public float yOffset = 0f;
    public float outputPower;
 
    public Transform panelForward;
@@ -25,12 +24,12 @@ public class BaseTracker : MonoBehaviour
             {
                float  sunX = sun.position.x;
                float disFromCenter = Mathf.Abs(sunX);
-               float mappedInternsity = Mathf.Clamp01(1f - (disFromCenter / 5f));
+               float mappedIntensity = Mathf.Clamp01(1f - (disFromCenter / 5f));
 
-               lightSource.intensity = mappedInternsity * 10f;
+               lightSource.intensity = mappedIntensity * 10f;
                lightSource.updateLightVisual();
 
-               outputPower = mappedInternsity * 100f;
+               outputPower = mappedIntensity * 100f;
 
                Light sunlight = sun.GetComponentInChildren<Light> ();
                if (sunlight != null) {

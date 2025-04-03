@@ -1,24 +1,21 @@
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.Video;
+
 public class LightSourceController : MonoBehaviour
 {
 
     //AutoMode Var
     public bool autoMode = false;
     public float autoMoveSpeed = 1f;
-
     public float aMinX = -5f;
     public float aMaxX = 5f;
     private float autoDirection = 1f;
 
 
-
+    //Manual Var
     public float moveSpeed = 10f;
     public float intensity = 1f;
     public float minX = -5f, maxX = 5f, minZ = -5f, maxZ = 5f;
     private Rigidbody rb;
-
     private Light pointLight;
 
     void Start()
