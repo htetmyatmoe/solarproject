@@ -8,12 +8,19 @@ public class AutoModeUI : MonoBehaviour
 
    public GameObject batteryUI;
    public GameObject StatusUI;
+   public GameObject AutoModeLabel;
 
    public void SetAutoMode(bool isOn){
+
+    Debug.Log ("SetAutoMode called: " + isOn);
     if(batteryUI != null)
     {batteryUI.SetActive(!isOn);}
     if(StatusUI != null){
       StatusUI.SetActive(!isOn);
+    }
+
+    if (AutoModeLabel != null){
+      AutoModeLabel.SetActive(isOn);
     }
     
    }

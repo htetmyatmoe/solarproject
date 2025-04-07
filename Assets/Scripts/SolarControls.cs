@@ -67,17 +67,6 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""a6e41ad5-e307-495b-850d-8694818de3c0"",
-                    ""path"": ""<XRController>{LeftHand}/thumbstick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""04a53337-ee8a-4505-a344-d25313971b12"",
                     ""path"": ""<OculusTouchController>{LeftHand}/primaryButton"",
                     ""interactions"": """",
@@ -106,6 +95,17 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d05cbe7-7392-4d97-adc4-d4fab4d1fb08"",
+                    ""path"": ""<XRController>{LeftHand}/thumbstick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
