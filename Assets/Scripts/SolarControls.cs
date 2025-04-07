@@ -62,6 +62,24 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""User"",
+                    ""type"": ""Value"",
+                    ""id"": ""b09b5a90-bd3d-4c7c-9839-cc57921df063"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""UserView"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb404f46-52e4-4cbc-ad28-5d58186c46fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +126,28 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1b498d9-9d23-4cc6-81e6-4f79d9b7b1f0"",
+                    ""path"": ""<XRController>{RightHand}/thumbstick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""User"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b01b181c-4e37-427f-8d06-00ce6b05c2d8"",
+                    ""path"": ""<XRController>{LeftHand}/gripPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UserView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +160,8 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
         m_Player_IncreaseIntensity = m_Player.FindAction("IncreaseIntensity", throwIfNotFound: true);
         m_Player_DecreaseIntensity = m_Player.FindAction("DecreaseIntensity", throwIfNotFound: true);
         m_Player_Mode = m_Player.FindAction("Mode", throwIfNotFound: true);
+        m_Player_User = m_Player.FindAction("User", throwIfNotFound: true);
+        m_Player_UserView = m_Player.FindAction("UserView", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -185,6 +227,8 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_IncreaseIntensity;
     private readonly InputAction m_Player_DecreaseIntensity;
     private readonly InputAction m_Player_Mode;
+    private readonly InputAction m_Player_User;
+    private readonly InputAction m_Player_UserView;
     public struct PlayerActions
     {
         private @SolarControls m_Wrapper;
@@ -193,6 +237,8 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
         public InputAction @IncreaseIntensity => m_Wrapper.m_Player_IncreaseIntensity;
         public InputAction @DecreaseIntensity => m_Wrapper.m_Player_DecreaseIntensity;
         public InputAction @Mode => m_Wrapper.m_Player_Mode;
+        public InputAction @User => m_Wrapper.m_Player_User;
+        public InputAction @UserView => m_Wrapper.m_Player_UserView;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,6 +260,12 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
             @Mode.started += instance.OnMode;
             @Mode.performed += instance.OnMode;
             @Mode.canceled += instance.OnMode;
+            @User.started += instance.OnUser;
+            @User.performed += instance.OnUser;
+            @User.canceled += instance.OnUser;
+            @UserView.started += instance.OnUserView;
+            @UserView.performed += instance.OnUserView;
+            @UserView.canceled += instance.OnUserView;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -230,6 +282,12 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
             @Mode.started -= instance.OnMode;
             @Mode.performed -= instance.OnMode;
             @Mode.canceled -= instance.OnMode;
+            @User.started -= instance.OnUser;
+            @User.performed -= instance.OnUser;
+            @User.canceled -= instance.OnUser;
+            @UserView.started -= instance.OnUserView;
+            @UserView.performed -= instance.OnUserView;
+            @UserView.canceled -= instance.OnUserView;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -253,5 +311,7 @@ public partial class @SolarControls: IInputActionCollection2, IDisposable
         void OnIncreaseIntensity(InputAction.CallbackContext context);
         void OnDecreaseIntensity(InputAction.CallbackContext context);
         void OnMode(InputAction.CallbackContext context);
+        void OnUser(InputAction.CallbackContext context);
+        void OnUserView(InputAction.CallbackContext context);
     }
 }
